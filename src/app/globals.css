@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @custom-variant dark (&:is(.dark *));
 
@@ -119,10 +121,6 @@
     @apply bg-background text-foreground;
   }
 }
-
-/* --------------------------- */
-/* DRN.today Enhancements Below */
-/* --------------------------- */
 
 html {
   font-family: 'Segoe UI', system-ui, sans-serif;
