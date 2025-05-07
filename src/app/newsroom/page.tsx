@@ -1,13 +1,6 @@
 'use client'
 
 import { PenLine, Eye, DollarSign, Clock } from 'lucide-react'
-import { createMetadata } from '@/lib/metadata'
-
-export const metadata = createMetadata({
-  title: 'Newsroom Dashboard – drn.today',
-  description: 'Access your posts, analytics, and tools in the DRN Newsroom.',
-  slug: '/newsroom',
-})
 
 export default function NewsroomHome() {
   return (
@@ -15,7 +8,9 @@ export default function NewsroomHome() {
       {/* Heading */}
       <div>
         <h1 className="text-2xl md:text-3xl font-bold text-drn-blue">Welcome, Journalist</h1>
-        <p className="text-muted-foreground text-sm">Here’s your latest newsroom activity and stats.</p>
+        <p className="text-muted-foreground text-sm">
+          Here’s your latest newsroom activity and stats.
+        </p>
       </div>
 
       {/* Metrics */}
@@ -59,7 +54,6 @@ export default function NewsroomHome() {
   )
 }
 
-// Reusable dashboard card
 function DashboardCard({
   title,
   value,
