@@ -1,0 +1,95 @@
+'use client'
+
+import {
+  Menu,
+  Bell,
+  UserCircle,
+  LogOut,
+  Settings,
+  User,
+  X,
+} from 'lucide-react'
+import { useState } from 'react'
+import { cn } from '@/lib/utils'
+import Sidebar from '@/components/Sidebar'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+
+export default function Topbar() {
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  return (
+    <>
+      <header
+        className={cn(
+          'sticky top-0 z-30 w-full h-16',
+          'bg-glass-gradient backdrop-blur-xs border-b border-border',
+          'flex items-center justify-between px-4 md:px-8'
+        )}
+      >
+        <div className="flex items-center gap-3">
+          <button
+            className="md:hidden"
+            onClick={() => setSidebarOpen(true)}
+            aria-label="Open menu"
+          >
+            <Menu className="w-5 h-5 text-muted-foreground" />
+          </button>
+          <h1 className="text-lg font-semibold text-foreground">
+            DRN Newsroom
+          </h1>
+        </div>
+
+        <div className="flex items-center gap-4 text-muted-foreground">
+          <Bell className="w-5 h-5 hover:text-foreground transition" />
+
+          <DropdownMenu>
+            <DropdownMenuTrigger className="outline-none">
+              <UserCircle className="w-6 h-6 hover:text-foreground transition" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-44">
+              <DropdownMenuLabel className="text-xs">My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <User className="w-4 h-4 mr-2" />
+                Profile
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Settings className="w-4 h-4 mr-2" />
+                Settings
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="text-red-500">
+                <LogOut className="w-4 h-4 mr-2" />
+                Logout
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </header>
+
+      {/* Mobile Sidebar Overlay */}
+      {sidebarOpen && (
+        <div className="fixed inset-0 z-40 flex">
+          <div className="fixed inset-0 bg-black/60" onClick={() => setSidebarOpen(false)} />
+          <div className="relative z-50 w-64 bg-glass-gradient backdrop-blur-xs border-r border-border p-4">
+            <button
+              className="absolute top-4 right-4 text-muted-foreground"
+              onClick={() => setSidebarOpen(false)}
+              aria-label="Close menu"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <Sidebar variant="mobile" />
+          </div>
+        </div>
+      )}
+    </>
+  )
+}
