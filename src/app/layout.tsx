@@ -33,6 +33,10 @@ export const metadata: Metadata = {
       },
     ],
   },
+  other: {
+    'application/rss+xml': 'https://drn.today/feed.xml',
+    'application/atom+xml': 'https://drn.today/feed.xml',
+  },
 }
 
 export default function RootLayout({
