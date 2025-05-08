@@ -5,8 +5,9 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { supabase } from '@/lib/storage/supabaseClient'
+import { uploadMediaToSupabase } from '@/lib/storage/uploadMediaToSupabase'
 import { useState } from 'react'
-import { UploadCloud, Send, CheckCircle } from 'lucide-react'
+import { UploadCloud, Send, CheckCircle, ImageIcon } from 'lucide-react'
 
 type FormData = {
   title: string
@@ -17,6 +18,7 @@ type FormData = {
 
 export default function SmartComposer() {
   const { register, handleSubmit, reset } = useForm<FormData>()
+  const [mediaFile, setMediaFile] = useState<File | null>(null)
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
 
@@ -24,12 +26,15 @@ export default function SmartComposer() {
     setLoading(true)
     setSuccess(false)
 
+    let media_url = null
+    if (mediaFile) {
+      media_url = await uploadMediaToSupabase(mediaFile, 'smartcomposer')
+    }
+
     const { error } = await supabase.from('posts').insert([
       {
-        title: data.title,
-        category: data.category,
-        location: data.location,
-        summary: data.summary,
+        ...data,
+        media_url,
       },
     ])
 
@@ -37,6 +42,7 @@ export default function SmartComposer() {
     if (!error) {
       setSuccess(true)
       reset()
+      setMediaFile(null)
     } else {
       alert('❌ Failed to publish post: ' + error.message)
     }
@@ -54,10 +60,32 @@ export default function SmartComposer() {
         </div>
         <Textarea placeholder="Write a brief summary..." {...register('summary')} />
 
-        <div className="flex flex-col items-center justify-center border border-dashed border-white/20 rounded-xl p-8 bg-black/10 text-white/60 hover:border-drn-green hover:text-white transition">
-          <UploadCloud className="w-8 h-8 mb-2" />
-          <p>Media upload will go here</p>
-        </div>
+        {/* Media Upload */}
+        <label
+          htmlFor="media"
+          className="flex flex-col items-center justify-center cursor-pointer border border-dashed border-white/20 rounded-xl p-8 bg-black/10 text-white/60 hover:border-drn-green hover:text-white transition"
+        >
+          <div className="flex flex-col items-center gap-1 mb-2">
+            <UploadCloud className="w-6 h-6" />
+            <ImageIcon className="w-5 h-5 text-muted-foreground" />
+          </div>
+
+          {mediaFile ? (
+            <span>{mediaFile.name}</span>
+          ) : (
+            <p>Click to upload image or video</p>
+          )}
+          <input
+            id="media"
+            type="file"
+            accept="image/*,video/*"
+            onChange={(e) => {
+              const file = e.target.files?.[0]
+              if (file) setMediaFile(file)
+            }}
+            className="hidden"
+          />
+        </label>
 
         <div className="flex gap-4">
           <Button type="submit" disabled={loading}>

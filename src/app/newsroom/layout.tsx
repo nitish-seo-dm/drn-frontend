@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { UserProvider } from '@/context/UserContext'
 export { metadata } from './metadata'
 
 export default function NewsroomLayout({
@@ -6,5 +7,9 @@ export default function NewsroomLayout({
 }: {
   children: ReactNode
 }) {
-  return <>{children}</>
+  return (
+    <UserProvider>
+      {children}
+    </UserProvider>
+  )
 }

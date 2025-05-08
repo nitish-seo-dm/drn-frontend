@@ -1,13 +1,20 @@
 'use client'
 
 import { PenLine, Eye, DollarSign, Clock } from 'lucide-react'
+import { useUserProfile } from '@/hooks/useUserProfile'
 
 export default function NewsroomHome() {
+  const { profile, loading } = useUserProfile()
+
+  const displayName = profile?.full_name || 'Journalist'
+
   return (
     <div className="space-y-6">
       {/* Heading */}
       <div>
-        <h1 className="text-2xl md:text-3xl font-bold text-drn-blue">Welcome, Journalist</h1>
+        <h1 className="text-2xl md:text-3xl font-bold text-drn-blue">
+          {loading ? 'Loading...' : `Welcome, ${displayName}`}
+        </h1>
         <p className="text-muted-foreground text-sm">
           Here’s your latest newsroom activity and stats.
         </p>

@@ -9,6 +9,8 @@ import {
   User,
   X,
 } from 'lucide-react'
+import LoginButton from '@/components/LoginButton'
+import Image from 'next/image'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import Sidebar from '@/components/Sidebar'
@@ -20,9 +22,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { useUserContext } from '@/context/UserContext'
 
 export default function Topbar() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const { profile, loading } = useUserContext()
 
   return (
     <>
@@ -47,14 +51,36 @@ export default function Topbar() {
         </div>
 
         <div className="flex items-center gap-4 text-muted-foreground">
+          {!loading && profile?.full_name && (
+            <span className="text-sm text-muted-foreground hidden md:inline-block">
+              {profile.full_name}
+            </span>
+          )}
+
+          <LoginButton />
           <Bell className="w-5 h-5 hover:text-foreground transition" />
 
           <DropdownMenu>
             <DropdownMenuTrigger className="outline-none">
-              <UserCircle className="w-6 h-6 hover:text-foreground transition" />
+              {profile?.avatar_url && typeof profile.avatar_url === 'string' ? (
+                <Image
+                  src={profile.avatar_url}
+                  alt="User avatar"
+                  width={28}
+                  height={28}
+                  className="rounded-full border border-border object-cover"
+                />
+              ) : (
+                <UserCircle
+                  className="w-6 h-6 hover:text-foreground transition"
+                  aria-label="User avatar fallback"
+                />
+              )}
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-44">
-              <DropdownMenuLabel className="text-xs">My Account</DropdownMenuLabel>
+              <DropdownMenuLabel className="text-xs">
+                {profile?.email || 'My Account'}
+              </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <User className="w-4 h-4 mr-2" />

@@ -13,9 +13,20 @@
       "static/chunks/951-872dd6c2a62c94fc.js",
       "static/chunks/main-app-1f94c9604fd73be3.js",
       "static/css/f30152c0704fba31.css",
+      "static/chunks/898-4b12359dfdcb19d2.js",
       "static/chunks/16-d3e459633478c303.js",
-      "static/chunks/356-4cd979b09930fadc.js",
-      "static/chunks/app/layout-e2c574caaee9e8f7.js"
+      "static/chunks/378-4456ef20cb4f52f4.js",
+      "static/chunks/916-1404f7a6bba66ecf.js",
+      "static/chunks/app/layout-672d952a01cfd9ac.js"
+    ],
+    "/(public)/login/page": [
+      "static/chunks/webpack-5b45e97b4e66ce43.js",
+      "static/chunks/09f5f10c-5d2c905fff7598bd.js",
+      "static/chunks/951-872dd6c2a62c94fc.js",
+      "static/chunks/main-app-1f94c9604fd73be3.js",
+      "static/chunks/898-4b12359dfdcb19d2.js",
+      "static/chunks/16-d3e459633478c303.js",
+      "static/chunks/app/(public)/login/page-79e5534fdacabcd7.js"
     ],
     "/page": [
       "static/chunks/webpack-5b45e97b4e66ce43.js",
@@ -30,23 +41,26 @@
       "static/chunks/09f5f10c-5d2c905fff7598bd.js",
       "static/chunks/951-872dd6c2a62c94fc.js",
       "static/chunks/main-app-1f94c9604fd73be3.js",
-      "static/chunks/app/newsroom/layout-e1e8d5568278d91c.js"
+      "static/chunks/898-4b12359dfdcb19d2.js",
+      "static/chunks/app/newsroom/layout-2e119b7ce60bffe5.js"
     ],
     "/newsroom/page": [
       "static/chunks/webpack-5b45e97b4e66ce43.js",
       "static/chunks/09f5f10c-5d2c905fff7598bd.js",
       "static/chunks/951-872dd6c2a62c94fc.js",
       "static/chunks/main-app-1f94c9604fd73be3.js",
-      "static/chunks/app/newsroom/page-dc61b374cd4f14ae.js"
+      "static/chunks/898-4b12359dfdcb19d2.js",
+      "static/chunks/app/newsroom/page-83d762ceddefeffd.js"
     ],
     "/newsroom/tools/SmartComposer/page": [
       "static/chunks/webpack-5b45e97b4e66ce43.js",
       "static/chunks/09f5f10c-5d2c905fff7598bd.js",
       "static/chunks/951-872dd6c2a62c94fc.js",
       "static/chunks/main-app-1f94c9604fd73be3.js",
+      "static/chunks/898-4b12359dfdcb19d2.js",
       "static/chunks/16-d3e459633478c303.js",
-      "static/chunks/972-515619a7f52fa931.js",
-      "static/chunks/app/newsroom/tools/SmartComposer/page-fe51109983e48021.js"
+      "static/chunks/478-2cc5f44810bc7d87.js",
+      "static/chunks/app/newsroom/tools/SmartComposer/page-722fc336f3f0801e.js"
     ]
   }
 }
