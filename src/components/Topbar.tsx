@@ -14,6 +14,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import Sidebar from '@/components/Sidebar'
+import GlassCard from '@/components/ui/GlassCard'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,13 +31,7 @@ export default function Topbar() {
 
   return (
     <>
-      <header
-        className={cn(
-          'sticky top-0 z-30 w-full h-16',
-          'bg-glass-gradient backdrop-blur-xs border-b border-border',
-          'flex items-center justify-between px-4 md:px-8'
-        )}
-      >
+      <GlassCard className="sticky top-0 z-30 w-full h-16 flex items-center justify-between px-4 md:px-8 border-b border-border">
         <div className="flex items-center gap-3">
           <button
             className="md:hidden"
@@ -52,7 +47,7 @@ export default function Topbar() {
 
         <div className="flex items-center gap-4 text-muted-foreground">
           {!loading && profile?.full_name && (
-            <span className="text-sm text-muted-foreground hidden md:inline-block">
+            <span className={cn('text-sm text-muted-foreground', 'hidden md:inline-block')}>
               {profile.full_name}
             </span>
           )}
@@ -98,21 +93,26 @@ export default function Topbar() {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-      </header>
+      </GlassCard>
 
       {/* Mobile Sidebar Overlay */}
       {sidebarOpen && (
         <div className="fixed inset-0 z-40 flex">
-          <div className="fixed inset-0 bg-black/60" onClick={() => setSidebarOpen(false)} />
-          <div className="relative z-50 w-64 bg-glass-gradient backdrop-blur-xs border-r border-border p-4">
-            <button
-              className="absolute top-4 right-4 text-muted-foreground"
-              onClick={() => setSidebarOpen(false)}
-              aria-label="Close menu"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            <Sidebar variant="mobile" />
+          <div
+            className="fixed inset-0 bg-black/60"
+            onClick={() => setSidebarOpen(false)}
+          />
+          <div className="relative z-50 w-64 p-4">
+            <GlassCard className="h-full border-r border-border relative">
+              <button
+                className="absolute top-4 right-4 text-muted-foreground"
+                onClick={() => setSidebarOpen(false)}
+                aria-label="Close menu"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              <Sidebar variant="mobile" />
+            </GlassCard>
           </div>
         </div>
       )}

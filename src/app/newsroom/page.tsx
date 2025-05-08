@@ -1,11 +1,11 @@
 'use client'
 
 import { PenLine, Eye, DollarSign, Clock } from 'lucide-react'
+import GlassCard from '@/components/ui/GlassCard'
 import { useUserProfile } from '@/hooks/useUserProfile'
 
 export default function NewsroomHome() {
   const { profile, loading } = useUserProfile()
-
   const displayName = profile?.full_name || 'Journalist'
 
   return (
@@ -40,7 +40,7 @@ export default function NewsroomHome() {
       </div>
 
       {/* Activity Feed */}
-      <div className="bg-glass-gradient backdrop-blur-xs border border-border p-4 rounded-xl space-y-4">
+      <GlassCard className="space-y-4">
         <h2 className="text-lg font-semibold text-foreground">Recent Activity</h2>
         <ul className="space-y-3 text-sm text-muted-foreground">
           <li className="flex items-center gap-2">
@@ -56,7 +56,7 @@ export default function NewsroomHome() {
             Edited “Weather Crisis Report”
           </li>
         </ul>
-      </div>
+      </GlassCard>
     </div>
   )
 }
@@ -71,12 +71,12 @@ function DashboardCard({
   icon: React.ReactNode
 }) {
   return (
-    <div className="bg-glass-gradient backdrop-blur-xs border border-border p-4 rounded-xl flex items-center justify-between shadow-sm">
+    <GlassCard className="flex items-center justify-between">
       <div>
         <p className="text-sm text-muted-foreground">{title}</p>
         <p className="text-xl font-bold text-foreground">{value}</p>
       </div>
       <div className="p-2 rounded-full bg-muted/20">{icon}</div>
-    </div>
+    </GlassCard>
   )
 }

@@ -8,6 +8,7 @@ import { supabase } from '@/lib/storage/supabaseClient'
 import { uploadMediaToSupabase } from '@/lib/storage/uploadMediaToSupabase'
 import { useState } from 'react'
 import { UploadCloud, Send, CheckCircle, ImageIcon } from 'lucide-react'
+import GlassCard from '@/components/ui/GlassCard'
 
 type FormData = {
   title: string
@@ -49,57 +50,65 @@ export default function SmartComposer() {
   }
 
   return (
-    <div className="glass-card space-y-6 max-w-5xl mx-auto">
-      <h1 className="text-2xl font-bold text-drn-blue">Smart Composer</h1>
+    <div className="space-y-6 max-w-5xl mx-auto px-4">
+      <GlassCard className="mb-4">
+        <h1 className="text-2xl font-bold text-drn-blue">Smart Composer</h1>
+        <p className="text-muted-foreground text-sm">Write, upload, and publish your next big report.</p>
+      </GlassCard>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <Input placeholder="Post Title" {...register('title', { required: true })} />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Input placeholder="Category" {...register('category', { required: true })} />
-          <Input placeholder="Location" {...register('location')} />
-        </div>
-        <Textarea placeholder="Write a brief summary..." {...register('summary')} />
+      <GlassCard>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <Input placeholder="Post Title" {...register('title', { required: true })} />
 
-        {/* Media Upload */}
-        <label
-          htmlFor="media"
-          className="flex flex-col items-center justify-center cursor-pointer border border-dashed border-white/20 rounded-xl p-8 bg-black/10 text-white/60 hover:border-drn-green hover:text-white transition"
-        >
-          <div className="flex flex-col items-center gap-1 mb-2">
-            <UploadCloud className="w-6 h-6" />
-            <ImageIcon className="w-5 h-5 text-muted-foreground" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Input placeholder="Category" {...register('category', { required: true })} />
+            <Input placeholder="Location" {...register('location')} />
           </div>
 
-          {mediaFile ? (
-            <span>{mediaFile.name}</span>
-          ) : (
-            <p>Click to upload image or video</p>
-          )}
-          <input
-            id="media"
-            type="file"
-            accept="image/*,video/*"
-            onChange={(e) => {
-              const file = e.target.files?.[0]
-              if (file) setMediaFile(file)
-            }}
-            className="hidden"
-          />
-        </label>
+          <Textarea placeholder="Write a brief summary..." {...register('summary')} />
 
-        <div className="flex gap-4">
-          <Button type="submit" disabled={loading}>
-            <Send className="w-4 h-4 mr-1" />
-            {loading ? 'Publishing...' : 'Publish'}
-          </Button>
-          {success && (
-            <div className="text-drn-green flex items-center gap-1 text-sm">
-              <CheckCircle className="w-4 h-4" />
-              Post published!
-            </div>
-          )}
-        </div>
-      </form>
+          <GlassCard className="p-6 text-center border-dashed border-white/20">
+            <label
+              htmlFor="media"
+              className="flex flex-col items-center justify-center cursor-pointer text-white/60 hover:text-white transition"
+            >
+              <div className="flex flex-col items-center gap-1 mb-2">
+                <UploadCloud className="w-6 h-6" />
+                <ImageIcon className="w-5 h-5 text-muted-foreground" />
+              </div>
+              {mediaFile ? (
+                <span>{mediaFile.name}</span>
+              ) : (
+                <p>Click to upload image or video</p>
+              )}
+              <input
+                id="media"
+                type="file"
+                accept="image/*,video/*"
+                onChange={(e) => {
+                  const file = e.target.files?.[0]
+                  if (file) setMediaFile(file)
+                }}
+                className="hidden"
+              />
+            </label>
+          </GlassCard>
+
+          <div className="flex gap-4">
+            <Button type="submit" disabled={loading}>
+              <Send className="w-4 h-4 mr-1" />
+              {loading ? 'Publishing...' : 'Publish'}
+            </Button>
+
+            {success && (
+              <div className="text-drn-green flex items-center gap-1 text-sm">
+                <CheckCircle className="w-4 h-4" />
+                Post published!
+              </div>
+            )}
+          </div>
+        </form>
+      </GlassCard>
     </div>
   )
 }
