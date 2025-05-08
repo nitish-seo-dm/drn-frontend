@@ -5,11 +5,20 @@
 /* ------------------------------------- */
 /* Global font + scroll behavior */
 html {
-  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-family: var(--font-geist-sans, 'Segoe UI', system-ui, sans-serif);
   scroll-behavior: smooth;
 }
 
-/* Optional: subtle glow effect background */
+/* Reset margins for consistent layout */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: theme('colors.background');
+  color: theme('colors.foreground');
+}
+
+/* ------------------------------------- */
+/* Subtle animated glow effect (optional) */
 body::before {
   content: '';
   position: fixed;
@@ -21,7 +30,7 @@ body::before {
   z-index: -1;
 }
 
-/* ✅ Reusable glassmorphism card — uses inline background in components */
+/* ✅ Reusable card class — fallback for components not using <GlassCard /> */
 .glass-card {
-  @apply backdrop-blur-sm rounded-2xl p-4 border border-white/10 shadow-lg text-foreground;
+  @apply backdrop-blur-sm rounded-2xl p-4 border border-white/10 shadow-lg text-foreground bg-white/5;
 }
