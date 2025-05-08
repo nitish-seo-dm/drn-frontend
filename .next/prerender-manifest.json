@@ -30,30 +30,6 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/newsroom/tools/SmartComposer": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "Next-Action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/newsroom/tools/SmartComposer",
-      "dataRoute": "/newsroom/tools/SmartComposer.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/newsroom": {
       "experimentalBypassFor": [
         {
@@ -69,6 +45,30 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/newsroom",
       "dataRoute": "/newsroom.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/newsroom/tools/SmartComposer": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "Next-Action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/newsroom/tools/SmartComposer",
+      "dataRoute": "/newsroom/tools/SmartComposer.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -106,8 +106,8 @@
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "105bea11c812a4728897c46f02e306cb",
-    "previewModeSigningKey": "485c4ff3ea8cc37c2bc8fb0f5d7459284ab27a80d783e195c3105de1792a00b8",
-    "previewModeEncryptionKey": "4925f2b969a623dbb9720a23ca13fce11a8ce0f7f4187aaa19b4a539efdbaad2"
+    "previewModeId": "d581cd1cc966646bc243fd83591baa82",
+    "previewModeSigningKey": "338b76f9ea9ef89703a94732f68bbab04fe24381875b1c8bdc8bd1bef5eed669",
+    "previewModeEncryptionKey": "e7c34a3143a2d8d225af58fd4c7f4f84addbd368b1a21bdd8c5820ac92f99e87"
   }
 }
