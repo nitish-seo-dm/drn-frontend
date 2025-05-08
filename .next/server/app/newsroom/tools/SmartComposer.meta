@@ -1,0 +1,7 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "4294967294",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/newsroom/layout,_N_T_/newsroom/tools/layout,_N_T_/newsroom/tools/SmartComposer/layout,_N_T_/newsroom/tools/SmartComposer/page,_N_T_/newsroom/tools/SmartComposer"
+  }
+}

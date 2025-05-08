@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import Sidebar from '@/components/Sidebar'
 import Topbar from '@/components/Topbar'
-import Providers from './providers'
+import { Providers } from './providers'
 import { cn } from '@/lib/utils'
 
 const geistSans = Geist({
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           'antialiased flex min-h-screen bg-background text-foreground',

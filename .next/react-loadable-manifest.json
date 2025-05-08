@@ -1,0 +1,36 @@
+{
+  "..\\node_modules\\.pnpm\\@supabase+auth-js@2.69.1\\node_modules\\@supabase\\auth-js\\dist\\module\\lib\\helpers.js -> @supabase/node-fetch": {
+    "id": 2940,
+    "files": []
+  },
+  "..\\node_modules\\.pnpm\\@supabase+functions-js@2.4.4\\node_modules\\@supabase\\functions-js\\dist\\module\\helper.js -> @supabase/node-fetch": {
+    "id": 2940,
+    "files": []
+  },
+  "..\\node_modules\\.pnpm\\@supabase+realtime-js@2.11.2\\node_modules\\@supabase\\realtime-js\\dist\\module\\RealtimeClient.js -> @supabase/node-fetch": {
+    "id": 2940,
+    "files": []
+  },
+  "..\\node_modules\\.pnpm\\@supabase+realtime-js@2.11.2\\node_modules\\@supabase\\realtime-js\\dist\\module\\RealtimeClient.js -> ws": {
+    "id": 1317,
+    "files": [
+      "static/chunks/317.c968408104c84254.js"
+    ]
+  },
+  "..\\node_modules\\.pnpm\\@supabase+storage-js@2.7.1\\node_modules\\@supabase\\storage-js\\dist\\module\\lib\\helpers.js -> @supabase/node-fetch": {
+    "id": 2940,
+    "files": []
+  },
+  "..\\node_modules\\.pnpm\\next@15.3.2_react-dom@19.1.0_react@19.1.0__react@19.1.0\\node_modules\\next\\dist\\client\\index.js -> ../pages/_app": {
+    "id": 5294,
+    "files": [
+      "static/chunks/294.195b5d9732b48067.js"
+    ]
+  },
+  "..\\node_modules\\.pnpm\\next@15.3.2_react-dom@19.1.0_react@19.1.0__react@19.1.0\\node_modules\\next\\dist\\client\\index.js -> ../pages/_error": {
+    "id": 4075,
+    "files": [
+      "static/chunks/75.22b1443e2865bf34.js"
+    ]
+  }
+}

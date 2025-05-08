@@ -3,9 +3,9 @@
 import { ThemeProvider } from 'next-themes'
 import { Toaster } from '@/components/ui/sonner'
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+    <ThemeProvider attribute="class" defaultTheme="dark">
       {children}
       <Toaster />
     </ThemeProvider>
